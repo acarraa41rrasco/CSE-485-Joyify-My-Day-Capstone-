@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joyify Background</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; }
+    canvas { position: fixed; inset: 0; width: 100%; height: 100%; }
+    main { position: relative; display: grid; place-items: center; min-height: 100vh; }
+    .card { background: rgba(255,255,255,.86); padding: 24px; border-radius: 16px; }
+  </style>
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <main>
+    <div class="card">
+      <h1>Joyify My Day</h1>
+      <input id="mood" type="range" min="0" max="100" value="0">
+    </div>
+  </main>
+
+  <script src="background_first"></script>
+  <script>
+    const bg = JoyBackground.init(document.getElementById("bg"));
+    document.getElementById("mood").addEventListener("input", e => {
+      bg.setWarmth(e.target.value / 100);
+    });
+    bg.addThought("back to back meetings");
+    bg.addThought("long commute");
+    bg.addThought("no time for lunch");
+    bg.addThought("too many emails");
+    bg.addThought("feeling overwhelmed");
+    bg.addThought("not enough sleep");
+    bg.addThought("tight deadlines");
+    bg.addThought("stressful day");
+    bg.addThought("feeling anxious");
+  </script>
+</body>
+</html>
